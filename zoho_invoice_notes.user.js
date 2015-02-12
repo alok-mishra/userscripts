@@ -13,20 +13,30 @@
 // ==/UserScript==
 
 $(function() {
+    // First lets wait till all AJAX functions are done loading
     setTimeout(function() {
-        $('.popovercontainer').each(function(i, v) {
+        showNotes();
+    }, 4000);
+});
+
+function showNotes() {
+    setTimeout(function() {
+
+        // On a view change, we will need to refresh the notes as well as re-apply click handlers
+        $('a.ember-view').click(function() {
+            showNotes();
+        });
+
+        $('.table .popovercontainer').each(function(i, v) {
             $(v).mouseover();
 
             setTimeout(function() {
+                // console.log ($('.tooltip-inner:first').text());
+                $(v).siblings('.my-notes').remove();
+                $(v).parent().css('width', '300px').append('<span class="my-notes">' + $('.tooltip-inner:first').text() + '</span>');
                 $(v).mouseout();
-            }, i*500);
+            }, (i+1)*200);
 
         });
-
-        /*
-         * $('.popovercontainer').mouseover(function() {
-         *     console.log('mouse over');
-         * });
-         */
-    }, 6000);
-});
+    }, 2000);
+}

@@ -4,7 +4,7 @@
 // @description Shows invoice notes without having to hover your mouse
 // @author      Alok Mishra <alok@alokmishra.com>
 // @match       https://invoice.zoho.com/*
-// @version     0.4
+// @version     0.5
 // @downloadURL https://github.com/alok-mishra/userscripts/raw/master/zoho_invoice_notes.user.js
 // @updateURL   https://github.com/alok-mishra/userscripts/raw/master/zoho_invoice_notes.user.js
 // @grant       none
@@ -38,5 +38,5 @@ function showNotes() {
             }, (i+1)*200);
 
         });
-    }, 2000);
+    }, 4000);
 }
